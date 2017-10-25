@@ -35,7 +35,7 @@ docker pull cryptape/play
 
 有两种方式可以完成发布件构建，分别是二进制发布件构建和从源码编译生成发布件。
 
-**1. 从二进制发布件构建**
+**(1) 从二进制发布件构建**
 
 ```
 wget https://github.com/cryptape/cita/releases/cita-v0.1.0.tar.bz2
@@ -45,7 +45,7 @@ scripts/build_image_from_binary.sh
 ```
 完成后可以通过 `docker images` 找到 `cryptape/play` 的 `docker` 镜像。
 
-**2. 从源码编译生成发布件**
+**(2) 从源码编译生成发布件**
 
 ```
 git clone http://github.com/cryptape/cita
