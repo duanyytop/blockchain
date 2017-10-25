@@ -119,7 +119,7 @@ solc test_example.sol --bin
  
 如果文件没有错误，返回结果中将会包括 `test_example.sol` 的二进制代码，这个数值就是 `Cita` 链上该智能合约的唯一标示值。
 
-#### 2. 部署合约，发送者需要构建合约权限
+### 2. 部署合约，发送者需要构建合约权限
 
 得到 `solidity` 文件二进制代码后，就可以将其部署到 `Cita` 链上了，部署的方法已经用 `python` 脚本封装，只需要传入私钥和二进制代码即可。在 `Terminal` 执行以下命令：
 
@@ -131,7 +131,7 @@ python make_tx.py --privkey "352416e1c910e413768c51390dfd791b414212b7b4fe6b1a18f
 
 > 目前支持的 `python` 版本是2.7， 如果执行过程中报 `module` 找不到，可直接安装该 `module` 即可，具体命令为 `sudo python2.7 -m pip install pathlib`
 
-#### 3. 通过 `python` 脚本发送交易命令
+### 3. 通过 `python` 脚本发送交易命令
 
 在 `Terminal` 中执行：  `python send_tx.py`
 
@@ -151,7 +151,7 @@ python make_tx.py --privkey "352416e1c910e413768c51390dfd791b414212b7b4fe6b1a18f
 ```
 `status`为`OK`，表示合约已经发送到 `Cita` 链上。
 
-#### 4. 获得来自 `Cita` 区块链网络的回执
+### 4. 获得来自 `Cita` 区块链网络的回执
 
 在 `Terminal` 中执行： `python get_receipt.py`
 
@@ -174,7 +174,7 @@ python make_tx.py --privkey "352416e1c910e413768c51390dfd791b414212b7b4fe6b1a18f
 ```
 这里需要重点关注 `contractAddress` 和 `blockNumber`，下文调用合约方法会用到。
 
-#### 5. 获得合约文件方法的 `hash` 值
+### 5. 获得合约文件方法的 `hash` 值
 
 合约的调用是通过发送交易命令完成，调用具体的方法则是通过方法hash值完成
 
@@ -190,7 +190,7 @@ Function signatures:
 ```
 这里的get和set方法hash值是Cita链上的唯一标示值，下文调用合约方法会用到。
 
-#### 6. 调用合约文件中的set方法
+### 6. 调用合约文件中的set方法
 
 假定我们调用set方法，参数为1，也就是说将数值1存储到区块链内存中
 
@@ -202,7 +202,7 @@ python make_tx.py --privkey "352416e1c910e413768c51390dfd791b414212b7b4fe6b1a18f
 
 privkey是你的私钥，to参数是合约的目标地址，code参数是set方法和参数hash值的拼接，set方法的hash值为60fe47b1，将参数1转换为uint256，转换成16进制就是64位。
 
-#### 7. 通过 `python` 脚本发送交易命令
+### 7. 通过 `python` 脚本发送交易命令
 
 在 `Terminal` 中执行： `python sen_tx.py`
 
@@ -219,7 +219,7 @@ privkey是你的私钥，to参数是合约的目标地址，code参数是set方�
 
 ```
 
-#### 8. 获得来自 `Cita` 区块链网络的回执
+### 8. 获得来自 `Cita` 区块链网络的回执
 
 在 `Terminal` 中执行： `python get_receipt.py`
 
@@ -241,7 +241,7 @@ privkey是你的私钥，to参数是合约的目标地址，code参数是set方�
 }
 ```
 
-#### 9.发送 `eth_call Post` 请求，验证合约执行效果
+### 9.发送 `eth_call Post` 请求，验证合约执行效果
 
 调用合约中的 `get` 方法，验证之前 `set` 方法的执行效果
 
