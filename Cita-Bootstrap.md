@@ -66,13 +66,13 @@ wget https://raw.githubusercontent.com/cryptape/cita/develop/scripts/docker-comp
 ##### 生成配置数据
 
 ```
-docker-compose run admin
+sudo docker-compose run admin
 ```
 
 ##### 启动4个节点
 
 ```'
-docker-compose up node0 node1 node2 node3
+sudo docker-compose up node0 node1 node2 node3
 ```
 
 ##### 关闭节点
