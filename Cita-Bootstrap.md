@@ -108,7 +108,7 @@ Version: 0.4.18+commit.9cf6e910.Linux.g++
 ```
 表示安装成功，接下来就可以使用 `solc` 命令编译 `solidity` 文件了。
 
-Cita工程中包含了智能合约示例solidity文件，存放目录地址为 `（DIR)/cita/cita/scripts/contracts/tests`，其中`$(DIR)`代表工程的目录地址，进入该目录，就可以看到 `test_example.sol` 文件。
+`Cita` 工程中包含了智能合约示例 `solidity` 文件，存放目录地址为 `（DIR)/cita/cita/scripts/contracts/tests`，其中`$(DIR)`代表工程的目录地址，进入该目录，就可以看到 `test_example.sol` 文件。
 
 `test_example.sol` 文件是一个很简单的合约文件，只提供了简单的 `get` 和 `set` 方法，我们可以先调用 `set` 方法存储一个任意数值，然后再调用 `get` 方法验证存储是否生效，以此来检验合约部署和运行是否正常。
 
