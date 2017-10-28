@@ -27,15 +27,14 @@ EOF
 
 ### 2. 获取Cita镜像
 
-直接从 `hub.docker.com` 拉取
+获取Cita镜像有两种方式，一种是直接从 `hub.docker.com` 拉取
 
 ```
 docker pull cryptape/play
 ```
+另一种方式是通过发布件构建来获取Cita镜像，具体方式有两种，分别是二进制发布件构建和从源码编译生成发布件。
 
-有两种方式可以完成发布件构建，分别是二进制发布件构建和从源码编译生成发布件。
-
-**(1) 从二进制发布件构建**
+* 从二进制发布件构建
 
 ```
 wget https://github.com/cryptape/cita/releases/cita-v0.1.0.tar.bz2
@@ -45,7 +44,7 @@ scripts/build_image_from_binary.sh
 ```
 完成后可以通过 `docker images` 找到 `cryptape/play` 的 `docker` 镜像。
 
-**(2) 从源码编译生成发布件**
+* 从源码编译生成发布件
 
 ```
 git clone http://github.com/cryptape/cita
@@ -92,13 +91,12 @@ docker-compose down
 
 `Cita` 完全兼容以太坊的智能合约，`solidity` 是智能合约最为推荐的语言，因此我们也采用 `solidity` 语言来编写和测试智能合约。
 
-### 1. 编译 `solidity` 文件，返回文件 `bin` 值
+### 1. 编译 `solidity` 文件，返回文件字节码
 
 要想编译 `solidity`文件，你需要先安装编译器，`solidity` 智能合约可以通过多种方式进行编译
 
 1. 通过在线 `solidity` 实时编译器来编译。具体地址为https://remix.ethereum.org/
 2. 安装 `solc` 编译器编译
-3. 在客户端 `javascript console` 中，通过 `web3.eth.compile.solidity` 编译。
 
 本文采用第二种方式，`solc` 编译器是一个来自 `C++` 客户端实现的组件，安装方法请参考http://www.ethdocs.org/en/latest/ethereum-clients/cpp-ethereum/index.html。
 
@@ -110,26 +108,31 @@ Version: 0.4.18+commit.9cf6e910.Linux.g++
 ```
 表示安装成功，接下来就可以使用 `solc` 命令编译 `solidity` 文件了。
 
+Cita工程中包含了智能合约示例solidity文件，存放目录地址为 `（DIR)/cita/cita/scripts/contracts/tests`，其中`$(DIR)`代表工程的目录地址，进入该目录，就可以看到 `test_example.sol` 文件。
+
+`test_example.sol` 文件是一个很简单的合约文件，只提供了简单的 `get` 和 `set` 方法，我们可以先调用 `set` 方法存储一个任意数值，然后再调用 `get` 方法验证存储是否生效，以此来检验合约部署和运行是否正常。
+
 在`Terminal`执行： 
 
 ```
-cd $(DIR)/cita/cita/scripts/contracts/tests    // 其中`$(DIR)`代表你的工程目录
 solc test_example.sol --bin
 ```
  
-如果文件没有错误，返回结果中将会包括 `test_example.sol` 的二进制代码，这个数值就是 `Cita` 链上该智能合约的唯一标示值。
+如果文件没有错误，返回结果中将会包括 `test_example.sol` 的字节码，这个数值就是 `Cita` 链上该智能合约的唯一标示值。
 
 ### 2. 部署合约，发送者需要构建合约权限
 
-得到 `solidity` 文件二进制代码后，就可以将其部署到 `Cita` 链上了，部署的方法已经用 `python` 脚本封装，只需要传入私钥和二进制代码即可。在 `Terminal` 执行以下命令：
+得到 `solidity` 文件字节码后，就可以将其部署到 `Cita` 链上了，部署的方法已经用 `python` 脚本封装，只需要传入私钥和字节码即可。
+
+目前支持的 `python` 版本是2.7，`python` 脚本存放的位置为 `（DIR)/cita/cita/scripts/contracts/txtool/txtool` ，其中`$(DIR)`代表工程的目录地址，使用前你还需要提前安转好 `python` 脚本的依赖，具体安装方法可以参考 `(DIR)/cita/cita/scripts/contracts/txtool` 目录下的README.md文件。
+
+在 `Terminal` 执行以下命令：
 
 ```
 python make_tx.py --privkey "352416e1c910e413768c51390dfd791b414212b7b4fe6b1a18f58007fa894214" --code "606060405234156100105760006000fd5b610015565b60e0806100236000396000f30060606040526000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604b5780636d4ce63c14606c576045565b60006000fd5b341560565760006000fd5b606a60048080359060200190919050506093565b005b341560775760006000fd5b607d60a3565b6040518082815260200191505060405180910390f35b8060006000508190909055505b50565b6000600060005054905060b1565b905600a165627a7a72305820942223976c6dd48a3aa1d4749f45ad270915cfacd9c0bf3583c018d4c86f9da20029"
 ```
 
-参数解释： `code` 为第一步中获得的 `bin` 值, `privkey` 可随意获取
-
-> 目前支持的 `python` 版本是2.7， 如果执行过程中报 `module` 找不到，可直接安装该 `module` 即可，具体命令为 `sudo python2.7 -m pip install pathlib`
+参数解释： `code` 为第一步中获得的字节码, `privkey` 可随意获取
 
 ### 3. 通过 `python` 脚本发送交易命令
 
