@@ -37,7 +37,7 @@ docker pull cryptape/play
 * 从二进制发布件构建
 
 ```
-wget https://github.com/cryptape/cita/releases/cita-v0.1.0.tar.bz2
+wget https://github.com/cryptape/cita/releases/download/v0.10/cita.tar.bz2
 tar xf cita-v0.1.0.tar.bz2
 cd cita
 scripts/build_image_from_binary.sh 
