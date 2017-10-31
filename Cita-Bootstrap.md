@@ -81,7 +81,7 @@ sudo docker-compose up node0 node1 node2 node3
 # stop single node
 docker-compose stop node0
 # start single node
-docker-compotse start node0
+docker-compose start node0
 # stop all nodes
 docker-compose down 
 
