@@ -12,10 +12,10 @@ npm install -g truffle
 
 既然是以太坊开发工具，那么就需要提前安装好以太坊客户端，如果只是用于开发智能合约，那么安装[TestRPC](https://github.com/ethereumjs/testrpc)即可，如果需要发布到真实的以太坊环境，则需要安转以下任一客户端即可。
 
-[Geth (go-ethereum)](https://github.com/ethereum/go-ethereum) 基于go语言开发的以太坊客户端
-[WebThree (cpp-ethereum)](https://github.com/ethereum/cpp-ethereum) 基于c++开发的以太坊客户端
-[Parity](https://github.com/paritytech/parity) 基于Rust开发的以太坊客户端
-[More](https://www.ethereum.org/cli) 更多其他客户端
+- [Geth (go-ethereum)](https://github.com/ethereum/go-ethereum) 基于go语言开发的以太坊客户端
+- [WebThree (cpp-ethereum)](https://github.com/ethereum/cpp-ethereum) 基于c++开发的以太坊客户端
+- [Parity](https://github.com/paritytech/parity) 基于Rust开发的以太坊客户端
+- [More](https://www.ethereum.org/cli) 更多其他客户端
 
 
 ## 创建项目
@@ -263,13 +263,13 @@ contract('Greeter', function(accounts) {
             // Get a reference to the deployed Greeter contract, as a JS object.
             const instance = await Greeter.deployed();       
         
-        	// 先set一个Hello字符串，然后在get验证是否是该字符串
+            // 先set一个Hello字符串，然后在get验证是否是该字符串
             await instance.setGreeting("Hello");
             const content = await instance.greet();
             console.log("greet(): " + content);
             assert.equal(content, "Hello");
 
-			// 以下是利用web3可以获取的以太坊信息，更多接口调用可以参考web3官方api文档
+            // 以下是利用web3可以获取的以太坊信息，更多接口调用可以参考web3官方api文档
             var version = web3.version.api;
             console.log(version); // "0.20.0"
             
