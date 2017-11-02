@@ -10,6 +10,12 @@ Truffle的安装需要借助node的npm工具，所以需要提前安装node，no
 npm install -g truffle
 ```
 
+此外，truffle运行时还需要用到web3.js，所以你还需要安装web3.js，安装命令如下：
+
+```
+npm install web3
+```
+
 ## 选择以太坊客户端
 
 既然是以太坊开发工具，那么就需要提前安装好以太坊客户端，如果只是用于开发智能合约，那么安装[TestRPC](https://github.com/ethereumjs/testrpc)即可，如果需要发布到真实的以太坊环境，则需要安转以下任一客户端即可。
