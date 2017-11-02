@@ -1,3 +1,5 @@
+# 利用Truffle完成智能合约发布全流程
+
 Truffle是一款以太坊智能合约非常流行的集开发、测试、发布的框架，它让开发者可以更专注于编码。
 
 ## 安装Truffle
@@ -198,7 +200,7 @@ Saving successful migration to network...
 Saving artifacts...
 
 ```
-运行这条命令可能会遇到以下两种错误信息：
+运行这条命令过程中可能会遇到以下两种错误信息：
 
 ```
 No network specified. Cannot determine current network
@@ -263,7 +265,7 @@ contract('Greeter', function(accounts) {
             // Get a reference to the deployed Greeter contract, as a JS object.
             const instance = await Greeter.deployed();       
         
-            // 先set一个Hello字符串，然后在get验证是否是该字符串
+            // 先通过set方法存储一个Hello字符串，然后再通过get方法获取，并验证是否是该字符串
             await instance.setGreeting("Hello");
             const content = await instance.greet();
             console.log("greet(): " + content);
