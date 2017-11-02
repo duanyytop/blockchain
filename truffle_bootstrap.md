@@ -25,6 +25,7 @@ npm install web3
 - [Parity](https://github.com/paritytech/parity) 基于Rust开发的以太坊客户端
 - [More](https://www.ethereum.org/cli) 更多其他客户端
 
+这里我们仅做开发和测试，所以只需要安装TestRPC即可，官方对其描述为：Fast Ethereum RPC client for testing and development，所以使用TestRPC可以实现轻量级地开发测试流程。
 
 ## 创建项目
 
@@ -46,7 +47,7 @@ contracts目录下已经包含了用于发布合约的Migrations.sol，migration
 
 ## 配置网络信息
 
-在正式开始之前，你还需要先配置一下网络信息，v3.0版相比v2.0版有一些变化，本文以最新的3.0版为准。具体配置方法为在truffle.js文件中输入以下信息：
+在正式开始之前，你还需要先配置一下网络信息，本文以最新的4.0版为准。具体配置方法为在truffle.js文件中输入以下信息：
 
 ```javascript
 module.exports = {
