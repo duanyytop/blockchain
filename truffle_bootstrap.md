@@ -236,7 +236,7 @@ development: {
 ```
 // 先进入以太坊控制台
 
-$ truffle consloe
+$ truffle console
 truffle(development)> web3.eth.getBlock("pending").gasLimit
 4712388
 
