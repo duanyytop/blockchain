@@ -1,3 +1,2 @@
-# Blockchain tutorials
-
-Blockchain is more and more famous, so this series will publish more articles about blockchain technology
+# Blockchain Technology Tutorials
+1. [区块链如何工作？](./How_Does_the_Blockchain_work.md)
